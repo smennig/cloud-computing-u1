@@ -1,7 +1,6 @@
 package htwg.konstantz.cloud.ex1.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,9 +18,9 @@ public class Image {
     private String caption;
     private String path;
     private String location;
+    private String fileName;
 
     private Instant datetime;
-//    private List<String> tags;
 
     public Image() {
     }
@@ -57,6 +56,7 @@ public class Image {
     public void setLocation(String location) {
         this.location = location;
     }
+
     @JsonFormat(shape = JsonFormat.Shape.NUMBER, timezone = "UTC")
     public Instant getDatetime() {
         return datetime;
@@ -66,11 +66,11 @@ public class Image {
         this.datetime = datetime;
     }
 
-//    public List<String> getTags() {
-//        return tags;
-//    }
-//
-//    public void setTags(List<String> tags) {
-//        this.tags = tags;
-//    }
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 }

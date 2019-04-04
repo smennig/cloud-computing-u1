@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="scripts/menuScripts.js"></script>
+    <script>
+    $(document).ready(function(){$("#menu").load("bundles/headMenu.html");});
+    </script>
+    <link rel="stylesheet" href="css/headMenu.css">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+    <div id="menu"></div>
+    <div id="content"></div>
 </body>
 </html>

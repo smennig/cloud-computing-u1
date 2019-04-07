@@ -1,0 +1,8 @@
+2019-04-05 15:23:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "ALTER TABLE TEST-[*]DB.PUBLIC.IMAGE ADD COLUMN FILE_NAME VARCHAR(255) "; erwartet "., ADD, SET, RENAME, DROP, CHANGE, MODIFY, ALTER"
+Syntax error in SQL statement "ALTER TABLE TEST-[*]DB.PUBLIC.IMAGE ADD COLUMN FILE_NAME VARCHAR(255) "; expected "., ADD, SET, RENAME, DROP, CHANGE, MODIFY, ALTER"; SQL statement:
+alter table TEST-DB.PUBLIC.IMAGE add column file_name varchar(255) [42001-197]
+2019-04-07 12:20:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "ALTER TABLE TEST-[*]DB.PUBLIC.IMAGE ADD COLUMN FILE_NAME VARCHAR(255) "; erwartet "., ADD, SET, RENAME, DROP, CHANGE, MODIFY, ALTER"
+Syntax error in SQL statement "ALTER TABLE TEST-[*]DB.PUBLIC.IMAGE ADD COLUMN FILE_NAME VARCHAR(255) "; expected "., ADD, SET, RENAME, DROP, CHANGE, MODIFY, ALTER"; SQL statement:
+alter table TEST-DB.PUBLIC.IMAGE add column file_name varchar(255) [42001-197]

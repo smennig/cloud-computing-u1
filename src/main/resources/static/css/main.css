@@ -38,3 +38,22 @@
     border: 1px solid black;
     padding: 1%;
 }
+
+.imageDiv {
+    border: 1px solid green;
+    height:150px
+}
+
+.image {
+    border: 1px solid blue;
+    display:inline;
+    height:100%;
+    width:30%
+}
+
+.imageText {
+    border: 1px solid red;
+    float:right;
+    height:100%;
+    width:69%
+}

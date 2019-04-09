@@ -1,9 +1,11 @@
+<script src="scripts/Upload.js"></script>
 <div class="innerContent">
     <div style="height:100%">
         <Button id="addImageButton">Add Image</Button>
+        <input type="file" id="imgupload" onchange="loadImage(this.files)" style="display:none"/>
         <div id="addImageText">
-            <input type="text" class="inputFieldImage" title="imagetext" value="Bildunterschrift">
-            <input type="text" class="inputFieldImage" title="ort" value="Ort">
+            <input type="text" class="inputFieldImage" title="imagetext" value="Bildunterschrift"/>
+            <input type="text" class="inputFieldImage" title="ort" value="Ort"/>
             <!--<input type="text" class="inputFieldImage" title="tag" value="Tag">-->
             <p class="inputFieldImage" title="date">Heute</p>
         </div>

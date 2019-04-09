@@ -41,7 +41,8 @@
 
 .imageDiv {
     border: 1px solid green;
-    height:150px
+    height:150px;
+    margin-bottom: 5px;
 }
 
 .image {

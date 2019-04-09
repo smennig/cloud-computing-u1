@@ -7,19 +7,35 @@ $(document).on('click','#addImageButton', function(){
 function loadImage(file) {
     console.log("Loaded Image");
 
+    postData(file);
+}
+
+function postImage(id, file){
+    var data = new FormData();
+    console.log(file[0]);
+    data.append('file',file[0]);
+
+    fetch('/uploadImage/'+id,{
+        method: 'POST',
+        body: data,
+        header: {
+            'Content-Type':'multipart/form-data'
+        }
+    }).then(response => response.json()).then(response => console.log('Success:', JSON.stringify(response))).catch(error => console.error('Error:', error));
+}
+
+function postData(file){
     var data = {
-        caption: "header",
-        path: "",
-        location: "ort",
-        filename: "name",
-        image: file
+        caption: $('#inputImageText').val(),
+        location: $('#inputOrt').val(),
+        datetime: Date.now()
     };
 
-    fetch('/uploadImage/id',{
+    fetch('/images',{
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
-            'Content-Type': 'application.json'
+            'Content-Type': 'application/json'
         }
-    }).then(response => response.json()).then(response => console.log('Success:', JSON.stringify(response))).catch(error => console.error('Error:', error));
+    }).then(response => response.json()).then(response => postImage(response.id, file)).catch(error => console.error('Error:', error));
 }

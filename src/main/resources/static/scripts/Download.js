@@ -1,30 +1,25 @@
 $(document).ready(function () {
     console.log("Download Images");
-
-    var data = {};
-
     fetch('/images',{
-        method: 'GET',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
-    }).then(response => response.json()).then(data => getImage(JSON.stringify(data))).catch(error => console.error(error))
+        method: 'GET'
+    }).then(response => response.json()).then(data => getImage(data)).catch(error => console.error(error))
 });
 
 function getImage(json){
-    console.log(json);
 
-    var file = json;
+    json.forEach(function (image) {
 
-    $('<div class="imageDiv">' +
-        '<img src="" class="image" />' +
-        '<div class="imageText">' +
-        '<p>Text</p>' +
-        '<p>Text</p>' +
-        '<p>Date</p>' +
-        '</div>' +
-        '</div>');
+       const markup = `<div class="imageDiv">
+            <img src="${image.path}" class="image" />
+            <div class="imageText">
+            <p>${image.caption}</p>
+            <p>${image.location}</p>
+            <p>${new Date(image.datetime).toLocaleString("de-DE")}</p>
+            </div>
+            </div>`;
+
+        $('#fillDiv').append(markup);
+    })
 }
 
 //            <div class="imageDiv">

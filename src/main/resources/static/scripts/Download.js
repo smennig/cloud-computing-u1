@@ -7,6 +7,15 @@ $(document).ready(function () {
 
 function getImage(json){
 
+
+    var l =
+    {
+        "caption":"test",
+        "location":"usa",
+        "datetime":1554318235002
+
+    }
+
     json.forEach(function (image) {
 
        const markup = `<div class="imageDiv">

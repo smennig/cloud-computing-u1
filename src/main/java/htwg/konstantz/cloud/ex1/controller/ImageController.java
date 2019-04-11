@@ -1,6 +1,7 @@
 package htwg.konstantz.cloud.ex1.controller;
 
 import htwg.konstantz.cloud.ex1.entities.Image;
+import htwg.konstantz.cloud.ex1.entities.ImageFirestore;
 import htwg.konstantz.cloud.ex1.entities.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -21,6 +22,8 @@ public class ImageController {
     @Autowired
     private ImageRepository repo;
 
+    //TODO initialize with project id
+    private ImageFirestore firestore;
 
     @Autowired
     private FileStorageService fileStorageService;
@@ -31,15 +34,16 @@ public class ImageController {
 
     @GetMapping("/images")
     List<Image> all() {
-        return repo.findAll();
+        return firestore.getAllImages();
     }
 
     @PostMapping("/images")
     public Image saveImage(@RequestBody Image image) {
 
-        return repo.save(image);
+        return firestore.saveImage(image);
     }
 
+    //TODO add cloud Storage
     @PostMapping("uploadImage/{id}")
     public String uploadImage(@RequestParam("file") MultipartFile file, @PathVariable long id) {
         String fileName = fileStorageService.storeFile(file);
@@ -58,12 +62,13 @@ public class ImageController {
         return fileDownloadUri;
     }
 
+
     @GetMapping("/images/{id}")
-    public Image findImageById(@PathVariable Long id) {
-        return repo.findById(id).orElse(null);
+    public Image findImageById(@PathVariable String id) {
+        return firestore.getImage(id);
     }
 
-
+    //TODO remove for Firestore use url form cloud store directly
     @GetMapping("/" + DOWNLOAD_FILE_PATH + "/{id}")
     public ResponseEntity<Resource> downloadFile(@PathVariable Long id, HttpServletRequest request) {
 
@@ -82,7 +87,6 @@ public class ImageController {
         if (contentType == null) {
             contentType = "application/octet-stream";
         }
-
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(contentType))
                 .body(resource);

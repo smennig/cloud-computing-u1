@@ -13,7 +13,7 @@ public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private String id;
 
     private String caption;
     private String path;
@@ -25,11 +25,19 @@ public class Image {
     public Image() {
     }
 
-    public long getId() {
+    public Image(String caption, String path, String location, String fileName, Instant datetime) {
+        this.caption = caption;
+        this.path = path;
+        this.location = location;
+        this.fileName = fileName;
+        this.datetime = datetime;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

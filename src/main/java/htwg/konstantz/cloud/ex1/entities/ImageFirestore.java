@@ -3,6 +3,7 @@ package htwg.konstantz.cloud.ex1.entities;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
+import htwg.konstantz.cloud.ex1.configuration.Credentials;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +14,11 @@ public class ImageFirestore {
     private static final String IMAGES = "images";
     private final Firestore db;
 
-    public ImageFirestore(String projectId) {
+    public ImageFirestore() {
+
         FirestoreOptions firestoreOptions =
                 FirestoreOptions.getDefaultInstance().toBuilder()
-                        .setProjectId(projectId)
+                        .setCredentials(Credentials.getCredentials().get())
                         .build();
         db = firestoreOptions.getService();
     }
